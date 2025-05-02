@@ -1,10 +1,11 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("Задача 1.");
+        int purpose = 2_459_000;
         int savings = 15000;
-        int total = 0;
+        double total = 0;
         int month = 0;
-        while (total < 2_459_000) {
+        while (total < purpose) {
             total += savings;
             month++;
             System.out.println("Месяц " + month + ", сумма накоплений равна " + total + " рублей.");
@@ -16,7 +17,7 @@ public class Main {
             month++;
         }
         System.out.println();
-        for (month = 10; month >= 1;) {
+        for (month = 10; month >= 1; ) {
             System.out.print(month + " ");
             month--;
         }
@@ -31,41 +32,44 @@ public class Main {
             System.out.println("Год " + year + ", численность населения составляет " + population);
         }
         System.out.println("Задача 4.");
-        double total1 = 15000;
+        purpose = 12_000_000;
+        total = 15000;
         month = 0;
-        while (total1 < 12_000_000) {
-            total1 *= 1.07;
+        float percent = 1.07f;
+        while (total < purpose) {
+            total *= percent;
             month++;
-            String formatted = String.format("%.2f", total1);
+            String formatted = String.format("%.2f", total);
             System.out.println("Месяц " + month + ", сумма накоплений равна " + formatted + " рублей.");
         }
         System.out.println("Задача 5.");
-        total1 = 15000;
+        purpose = 12_000_000;
+        total = 15000;
         month = 0;
+        percent = 1.07f;
         while (true) {
             month++;
-            total1 *= 1.07;
+            total *= percent;
             if (month % 6 == 0) {
-                String formatted = String.format("%.2f", total1);
+                String formatted = String.format("%.2f", total);
                 System.out.println("Месяц " + month + ", сумма накоплений равна " + formatted + " рублей.");
             }
-            if (total1 >= 12_000_000) {
-                if (month % 6 != 0) {
-                    String formatted = String.format("%.2f", total1);
-                    System.out.println("Месяц " + month + ", сумма накоплений равна " + formatted + " рублей.");
-                }
+            if (total >= purpose && month % 6 != 0) {
+                String formatted = String.format("%.2f", total);
+                System.out.println("Месяц " + month + ", сумма накоплений равна " + formatted + " рублей.");
                 break;
             }
         }
         System.out.println("Задача 6.");
-        total1 = 15000;
+        total = 15000;
         month = 0;
         int year = 9;
+        percent = 1.07f;
         while (month < 12 * year) {
             month++;
-            total1 *= 1.07;
+            total *= percent;
             if (month % 6 == 0) {
-                String formatted = String.format("%.2f", total1);
+                String formatted = String.format("%.2f", total);
                 System.out.println("Месяц " + month + ", сумма накоплений равна " + formatted + " рублей.");
             }
         }
@@ -81,9 +85,14 @@ public class Main {
             }
         }
         System.out.println("Задача 8.");
+        int currentYear = 2025;
+        int lowerLimit = currentYear - 200;
+        int upperLimit = currentYear + 100;
         int period = 79;
-        for (year = 0;year < 2125; year += period)
-            if (year > 1825) {
+        year = lowerLimit / period;
+        year *= period;
+        for (; year < upperLimit; year += period)
+            if (year > lowerLimit) {
             System.out.println(year);
         }
     }
